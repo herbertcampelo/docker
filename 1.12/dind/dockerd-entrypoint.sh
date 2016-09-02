@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 if [ "$#" -eq 0 -o "${1:0:1}" = '-' ]; then
 	set -- docker daemon \
 		--host=unix:///var/run/docker.sock \
+		--insecure-registry=portus.conductor.tecnologia:5000 \
 		--host=tcp://0.0.0.0:2375 \
 		--storage-driver=vfs \
 		"$@"
